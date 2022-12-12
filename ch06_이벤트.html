@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+</head>
+<body>
+    <p onclick="alert('문자열을 클릭했어요')">클릭해주세요</p>
+    <p onclick="testFunc()">사용자 함수가 실행됩니다. 클릭해주세요</p>
+    <p> HTML 이벤트 속성으로 이벤트 핸들러 함수를 넣어줄 때,
+        "함수이름()" 형태로 넣어서 사용할 수 있다.
+        이때, 인수 값을 넣어 줄 때 문자열일 경우 '' 사용하여 ""가 겹치지않게 주의
+        * 숫자값일 경우 그대로 넣어주면 됨 
+    </p>
+    <input type="text" id="text" value="입력값입니다">
+    <input type="checkbox" name="" id="checkbox" checked> 체크박스입니다
+
+    <p>값을 넣어주세요</p>
+    <input type="text" id="inputtext" onchange="input()" 
+            onfocus="chageBackground()" onblur="removeBackground()">
+    <button onclick="input()">확인</button>
+    <p id="textshow"></p>
+
+    <script>
+        // 내용 : 확인하시겠습니까?
+        // comfirm을 사용하여 예일 경우: alert 창에 확인을 출력
+        // 아니오일 경우 : 취소했습니다를 콘솔에 출력 
+
+        function testFunc() {
+            if(confirm("확인하시겠습니까?")){
+                alert("확인")
+            }else{
+                console.log("취소했습니다")
+            }
+        }
+
+        // onload이벤트
+        window.onload = function() {
+            console.log("윈도우가 로드되었습니다")
+        }
+
+        // 요소의 속성으로 등록하는 방법 실습1
+        function input() {
+            const text = document.querySelector("#inputtext");
+            let textValue = text.value;
+
+            const pTag = document.querySelector("#textshow");
+            pTag.innerHTML = textValue;
+        }
+
+        // 요소의 속성으로 등록하는 방법 실습2
+        function chageBackground() {
+            const input = document.querySelector("#inputtext")
+            input.style.backgroundColor = "gray";
+        }
+
+        function removeBackground() {
+            const input = document.querySelector("#inputtext")
+            input.style.backgroundColor = "white";
+        }
+        
+        
+    </script>
+</body>
+</html>

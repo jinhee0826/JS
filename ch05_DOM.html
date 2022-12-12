@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+
+    <h1 id="title">처음 제목</h1>
+    <a href="#">링크</a>
+    <p class="text">클래스가 적용된 p태그</p> 
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <form id="form">
+        <label for="">이름</label>
+        <input type="text" id="name">
+    </form>
+
+    <script>
+        // DOM 선택 메소드
+        // document.querySelector()
+
+        // DOM 생성 메소드
+        // return을 통해서 요소를 생성, 변수에 할당해서 사용할 수 있다
+        // 생성만 하고 HTML문서에 추가하지는 않는다.
+        document.createElement("h1")
+
+        // DOM 요소 속성 변경
+        // 문서객체에 접근해서 속성을 바꿀 수 있다.
+        // ul 안에 li를 한번에 바꾸는 방법
+        // id => #, class => .
+        let liTag = document.querySelectorAll("ul li"); // 요소 선택
+        // 여러개의 요소는 배열에 들어가 있으므로 한번에 접근하기 위해 for문 사용
+        for(let i=0; i<liTag.length; i++){
+            liTag[i].innerHTML = "요소의 내용을 한번에 수정" // 요소 속성 수정
+            liTag[i].style.color = "blue" // 스타일 변경 
+        }
+
+        // a태그에 링크 걸기 
+        let aTag = document.querySelector("a")
+        aTag.href = 'http://www.daum.net'
+
+        // p태그 찾아가서 작성내용 바꾸고 스타일 변경 
+        let pTag = document.querySelector(".text")
+        pTag.innerHTML = "클래스가 적용된 p태그2"
+        pTag.style.backgroundColor = "yellow" //'rgb(255,255,0)'으로 해도 됨
+
+        // h1태그 스타일 변경 
+        let hTag = document.querySelector("#title")
+        hTag.style.textDecoration ="line-through"
+
+        // formdml input에 접근하여 잠금할때
+        let formTag = document.querySelector("#form #name")
+        formTag.disabled = true;
+
+        // document.forms[0].childNodes
+        // 모든 요소 다 들고 옴
+        //document.forms[0].elements
+        // 사용자의 요소들만 
+    </script>
+</body>
+</html>
